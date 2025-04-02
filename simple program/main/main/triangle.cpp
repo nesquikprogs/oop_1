@@ -1,6 +1,6 @@
-#include "triangle.h"
-#include <cmath>
-#include <cassert>
+#include "triangle.h" // Подключение заголовочного файла, содержащего объявление функций для работы с треугольником
+#include <cmath> // Подключение библиотеки для математических вычислений (sqrt, pow и другие математические функции).
+#include <cassert> // Подключение библиотеки для проверки утверждений (assert), используется для отладки и тестирования.
 
 // Функция с набором ассертов, проверяющая корректность работы calculateLeg() и calculateRadius()
 void runAssertions() {
@@ -23,12 +23,14 @@ void runAssertions() {
     assert(abs(calculateRadius(7.2, 5.4, 4.32) - 1.26) < 0.001);
 }
 
-// Функция вычисления второго катета по теореме пифагора с аргументами hypotenuse - гипотенуза, leg1 - первый катит
+// Функция вычисления второго катета по теореме пифагора с аргументами hypotenuse - гипотенуза, leg1 - первый катет
+// Возвращает длину второго катета типа double
 double calculateLeg(double hypotenuse, double leg1) {
-    return sqrt(pow(hypotenuse, 2) - pow(leg1, 2));
+    return sqrt(pow(hypotenuse, 2) - pow(leg1, 2)); // Теорема Пифагора: leg2 = sqrt(hypotenuse² - leg1²)
 }
 
-// Функция вычисления радиуса вписанной окружности по формуле r = (a + b - c) / 2  с аргументами hypotenuse - гипотенуза, leg1 - первый катит, leg2 - второй катит
+// Функция вычисления радиуса вписанной окружности по формуле r = (a + b - c) / 2  с аргументами hypotenuse - гипотенуза, leg1 - первый катит, leg2 - второй катет
+// Возвращает радиус вписанной окружности типа double
 double calculateRadius(double hypotenuse, double leg1, double leg2) {
-    return (leg1 + leg2 - hypotenuse) / 2;
+    return (leg1 + leg2 - hypotenuse) / 2; // Формула радиуса вписанной окружности: r = (a + b - c) / 2
 }
