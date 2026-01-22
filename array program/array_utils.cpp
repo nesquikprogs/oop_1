@@ -96,6 +96,9 @@ namespace array_utils {
         return product;
     }
 
+
+    // red1: сделать отдельно try catch от throw
+    // 
     // Запись в файл для вектора
     // Аргументы:
     // arr Вектор, элементы которого нужно записать в файл.
@@ -103,23 +106,20 @@ namespace array_utils {
     // Функция записывает элементы вектора arr в файл с указанным именем filename.
     // Если не удается открыть файл, выбрасывается исключение.
     void writeArrayToFile(const std::vector<double>& arr, const std::string& filename) {
-        try {
-            ofstream outFile(filename);
-            if (!outFile) { // Если не удалось открыть файл
-                throw runtime_error("Не удалось открыть файл для записи!");
-            }
+        ofstream outFile(filename);
+        if (!outFile) { // Если не удалось открыть файл
+            throw runtime_error("Не удалось открыть файл для записи!");
+        }
 
-            for (size_t i = 0; i < arr.size(); ++i) {
-                outFile << arr[i] << endl; // Записываем элементы в файл
-            }
-            outFile.close(); // Закрываем файл
-            cout << "Массив успешно записан в файл " << filename << endl;
+        for (size_t i = 0; i < arr.size(); ++i) {
+            outFile << arr[i] << endl; // Записываем элементы в файл
         }
-        catch (const exception& e) {
-            cerr << "Ошибка при записи в файл: " << e.what() << endl; // Обработка ошибок
-        }
+        outFile.close(); // Закрываем файл
+        cout << "Массив успешно записан в файл " << filename << endl;
     }
 
+    // red1: сделать отдельно try catch от throw
+    // 
     // Запись в файл для обычного массива
     // Аргументы:
     // arr Обычный массив, элементы которого нужно записать в файл.
@@ -128,23 +128,20 @@ namespace array_utils {
     // Функция записывает элементы массива arr в файл с указанным именем filename.
     // Если не удается открыть файл, выбрасывается исключение.
     void writeArrayToFile(const double* arr, size_t size, const std::string& filename) {
-        try {
-            ofstream outFile(filename);
-            if (!outFile) { // Если не удалось открыть файл
-                throw runtime_error("Не удалось открыть файл для записи!");
-            }
+        ofstream outFile(filename);
+        if (!outFile) { // Если не удалось открыть файл
+            throw runtime_error("Не удалось открыть файл для записи!");
+        }
 
-            for (size_t i = 0; i < size; ++i) {
-                outFile << arr[i] << endl; // Записываем элементы в файл
-            }
-            outFile.close(); // Закрываем файл
-            cout << "Массив успешно записан в файл " << filename << endl;
+        for (size_t i = 0; i < size; ++i) {
+            outFile << arr[i] << endl; // Записываем элементы в файл
         }
-        catch (const exception& e) {
-            cerr << "Ошибка при записи в файл: " << e.what() << endl; // Обработка ошибок
-        }
+        outFile.close(); // Закрываем файл
+        cout << "Массив успешно записан в файл " << filename << endl;
     }
 
+    // red1: сделать отдельно try catch от throw
+    // 
     // Чтение из файла для вектора
     // Аргументы:
     // arr Вектор, в который будут загружены данные из файла.
@@ -152,24 +149,21 @@ namespace array_utils {
     // Функция читает данные из файла filename и загружает их в вектор arr.
     // Если файл не удается открыть, выбрасывается исключение.
     void readArrayFromFile(std::vector<double>& arr, const std::string& filename) {
-        try {
-            ifstream inFile(filename);
-            if (!inFile) { // Если не удалось открыть файл
-                throw runtime_error("Не удалось открыть файл для чтения!");
-            }
+        ifstream inFile(filename);
+        if (!inFile) { // Если не удалось открыть файл
+            throw runtime_error("Не удалось открыть файл для чтения!");
+        }
 
-            size_t index = 0;
-            while (inFile >> arr[index]) { // Чтение данных в вектор
-                ++index;
-            }
-            inFile.close(); // Закрываем файл
-            cout << "Массив успешно загружен из файла " << filename << endl;
+        size_t index = 0;
+        while (inFile >> arr[index]) { // Чтение данных в вектор
+            ++index;
         }
-        catch (const exception& e) {
-            cerr << "Ошибка при чтении из файла: " << e.what() << endl; // Обработка ошибок
-        }
+        inFile.close(); // Закрываем файл
+        cout << "Массив успешно загружен из файла " << filename << endl;
     }
 
+    // red1: сделать отдельно try catch от throw
+    // 
     // Чтение из файла для обычного массива
     // Аргументы:
     // arr Обычный массив, в который будут загружены данные из файла.
@@ -178,40 +172,30 @@ namespace array_utils {
     // Функция читает данные из файла filename и загружает их в обычный массив arr.
     // Если файл не удается открыть, выбрасывается исключение.
     void readArrayFromFile(double* arr, size_t size, const std::string& filename) {
-        try {
-            ifstream inFile(filename);
-            if (!inFile) { // Если не удалось открыть файл
-                throw runtime_error("Не удалось открыть файл для чтения!");
-            }
+        ifstream inFile(filename);
+        if (!inFile) { // Если не удалось открыть файл
+            throw runtime_error("Не удалось открыть файл для чтения!"); 
+        }
 
-            size_t index = 0;
-            while (inFile >> arr[index] && index < size) { // Чтение данных в обычный массив
-                ++index;
-            }
-            inFile.close(); // Закрываем файл
-            cout << "Массив успешно загружен из файла " << filename << endl;
+        size_t index = 0;
+        while (inFile >> arr[index] && index < size) { // Чтение данных в обычный массив
+            ++index;
         }
-        catch (const exception& e) {
-            cerr << "Ошибка при чтении из файла: " << e.what() << endl; // Обработка ошибок
-        }
+        inFile.close(); // Закрываем файл
+        cout << "Массив успешно загружен из файла " << filename << endl
     }
 
     // Тестирование функции перемножения элементов массива с использованием assert
     // Функция выполняет несколько тестов, проверяя, что функция calculateProduct работает корректно.
     // Если хотя бы один тест не проходит, выбрасывается исключение.
     void testCalculateProduct() {
-        try {
-            assert(calculateProduct(std::vector<double>{2.0, 3.0, 4.0}) == 24.0);
-            assert(calculateProduct(std::vector<double>{0.0, 3.0, 5.0}) == 0.0);
-            assert(calculateProduct(std::vector<double>{5.0}) == 5.0);
-            assert(calculateProduct(std::vector<double>{-2.0, 3.0, -4.0}) == 24.0);
-            assert(calculateProduct(std::vector<double>{0.0}) == 0.0);
-            assert(calculateProduct(std::vector<double>{-1.0, -2.0, -3.0}) == -6.0);
-            cout << "Все тесты прошли успешно!" << endl;
-        }
-        catch (const exception& e) {
-            cerr << "Ошибка при тестировании функции произведения: " << e.what() << endl; // Обработка ошибок
-        }
+        assert(calculateProduct(std::vector<double>{2.0, 3.0, 4.0}) == 24.0);
+        assert(calculateProduct(std::vector<double>{0.0, 3.0, 5.0}) == 0.0);
+        assert(calculateProduct(std::vector<double>{5.0}) == 5.0);
+        assert(calculateProduct(std::vector<double>{-2.0, 3.0, -4.0}) == 24.0);
+        assert(calculateProduct(std::vector<double>{0.0}) == 0.0);
+        assert(calculateProduct(std::vector<double>{-1.0, -2.0, -3.0}) == -6.0);
+        cout << "Все тесты прошли успешно!" << endl;
     }
 
 }
