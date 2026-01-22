@@ -1,0 +1,40 @@
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.suo
+*.user
+*.userosscache
+*.sdf
+*.cache
+*.db
+*.opendb
+*.tlog/
+*.lastbuildstate
+*.ncb
+*.sbr
+*.tlh
+*.tli
+
+# Build results
+Debug/
+Release/
+x64/
+x86/
+build/
+
+# Visual Studio Code 
+.vscode/
+
+# C++ specific
+*.exe
+*.obj
+*.o
+*.pch
+*.pdb
+*.idb
+*.ipch
+
+# Temporary files
+*.log
+*.tmp
+*.bak
